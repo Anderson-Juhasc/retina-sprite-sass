@@ -1,6 +1,6 @@
 # Retina Sprite Sasss
 
-Cria sprites para baixa e alta qualidade de maneira simples.
+Cria sprites para baixa e alta( retina display ) qualidade de maneira simples.
 
 ## Comece a usar agora
 
