@@ -4,7 +4,7 @@ Cria sprites para baixa e alta qualidade de maneira simples.
 
 ## Comece a usar agora
 
-Faça um clone do repositóro - `git clone git@github.com:Anderson-Juhasc/retina-sprite-sass.git` ou [Baixe aqui]().
+Faça um clone do repositóro - `git clone git@github.com:Anderson-Juhasc/retina-sprite-sass.git` ou [Baixe aqui](https://github.com/Anderson-Juhasc/retina-sprite-sass/zipball/master).
 
 ## Requerimentos
 
@@ -15,4 +15,4 @@ Use `compass watch` para assistir as mudanças em seus arquivos.
 
 ## Obrigado
 
-Essa ferramenta foi baseada neste gist: (https://gist.github.com/2140082)
+Essa ferramenta foi baseada neste gist: https://gist.github.com/2140082
