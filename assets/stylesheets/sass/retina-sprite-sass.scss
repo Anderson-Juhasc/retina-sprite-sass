@@ -5,39 +5,39 @@
 // É nescessário criar as pastas para as versao de baixa e alta qualidade.
 //
 
-$sprites: sprite-map("sprites/*.png", $spacing: 20px);
-$sprites2x: sprite-map("sprites2x/*.png", $spacing: 40px);
+$space: 20px;
+$sprites: sprite-map("sprites/*.png", $spacing: $space);
+$sprites2x: sprite-map("sprites2x/*.png", $spacing: $space * 2);
 
 
-//
-// Esse @mixin é utilizado para setar a imagem na posicao do sprite.
-// usando: @include retina-sprite($[nome_da_imagem], $[dimensoes_da_imagem: true], $[padding]);
-//
-
-@mixin retina-sprite($name, $sprites, $sprites2x, $dimensions: true, $pad: 0) {
-    background-position: sprite-position($sprites, $name, -$pad, -$pad);
-    background-repeat: no-repeat;
-
-    @if ($dimensions == true) {
-        @include sprite-dimensions($sprites, $name);
-    }
-
-    @if ($pad > 0) {
-        padding: $pad
+// usage: @include create-sprite(name_sprite_file);
+@mixin create-sprite($name, $dimensions: true, $pad: 0, $sprites: $sprites) {
+    .#{$name} {
+        background-position: sprite-position($sprites, $name, -$pad, -$pad);
+    
+        @if ($dimensions == true) {
+            @include sprite-dimensions($sprites, $name);
+        }
+    
+        @if ($pad > 0) {
+            padding: $pad
+        }
     }
 }
 
 
-// Esse @mixin cria um padrao de inicio para suas classes com sprite
-// o padrao é "sprite", mas voce pode mudar para o que achar melhor.
-// usando: @include retina-sprite-class($[nome_padrao_de_classe]);
-@mixin retina-sprite-class($className: sprite) {
-    [class^="#{$className}-"] {
-        background-image: sprite-url($sprites);
+.s {
+    @include inline-block();
+    
+    background-image: sprite-url($sprites);
 
-        @media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 2) {
-            background-image: sprite-url($sprites2x);
-            @include background-size(ceil(image-width(sprite-path($sprites2x)) / 2) auto);
-        }
+    @media (min--moz-device-pixel-ratio: 1.5),
+    (-webkit-min-device-pixel-ratio: 1.5),
+    (-o-min-device-pixel-ratio: 3/2),
+    (min-device-pixel-ratio: 1.5),
+    (min-resolution: 1.5dppx),
+    (min-resolution: 144dpi) {
+        @include background-size(ceil(image-width(sprite-path($sprites2x)) / 2) auto);
+        background-image: sprite-url($sprites2x);
     }
 }
